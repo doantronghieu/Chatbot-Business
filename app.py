@@ -2,6 +2,7 @@ import config
 from use_cases import VTC
 import my_gradio.chatbot as chatbot_utils
 import gradio as gr
+from fastapi import FastAPI
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -105,10 +106,27 @@ with gr.Blocks() as demo:
                 inputs=[chat_app.human_msg],
             )
 
+app = FastAPI()
+
+
+@app.get("/")
+async def read_main():
+    return {
+        "message": "This is your main app"
+    }
+
+app = gr.mount_gradio_app(app, demo, path="/gradio")
+
 if __name__ == "__main__":
     # Enable queuing to facilitate streaming intermediate outputs.
     demo.queue()
     demo.launch(share=False)
     # pass
 
+# If develop gradio app
 # gradio app.py
+
+# If run in production: uvicorn FILE_NAME:FASTAPI_OBJ
+# uvicorn run:app
+
+# If run in production (Render): uvicorn run:app --host 0.0.0.0 --port 8000

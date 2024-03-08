@@ -31,7 +31,6 @@ pdfminer.six
 pypdfium2
 pillow_heif
 unstructured_inference
-pikepdf
 
 spellchecker
 pyspellchecker
