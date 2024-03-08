@@ -47,6 +47,14 @@ with gr.Blocks() as demo:
 
             chat_app.chatbot.like(chatbot_utils.vote, None, None)
 
+            gr.Markdown(
+                """\
+            # Instruction
+            
+            - Enter your query in the text box then press Enter.
+            """
+            )
+
     with gr.Tab("Youtube Transcript Summarizer"):
         pass
 
@@ -104,6 +112,15 @@ with gr.Blocks() as demo:
                     "Các khóa học về lập trình",
                 ],
                 inputs=[chat_app.human_msg],
+            )
+            
+            gr.Markdown(
+                """\
+            # Instruction
+            
+            - Enter your query in the text box then press Enter.
+            - Or choose one of the examples, click again on the text box and press Enter.
+            """
             )
 
 app = FastAPI()
