@@ -137,7 +137,7 @@ app = gr.mount_gradio_app(app, demo, path="/gradio")
 if __name__ == "__main__":
     # Enable queuing to facilitate streaming intermediate outputs.
     demo.queue()
-    demo.launch(share=False)
+    demo.launch(share=True)
     # pass
 
 # If develop gradio app
